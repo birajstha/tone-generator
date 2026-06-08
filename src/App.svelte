@@ -153,26 +153,19 @@
 <div class="app-container">
   <!-- Header -->
   <div class="header">
-    <div class="header-left">
-      <a href="/" class="home-link">← Home</a>
-    </div>
-    <div class="header-center">
-      <h1>TONE GENERATOR</h1>
-    </div>
-    <div class="header-right">
-      <button class="theme-btn" on:click={toggleTheme} aria-label="Toggle theme">
-        {#if theme === 'dark'}
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="4"></circle>
-            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
-          </svg>
-        {:else}
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-            <path d="M20.354 15.354A9 9 0 018.646 3.646 9 9 0 1012 21a8.96 8.96 0 008.354-5.646z"></path>
-          </svg>
-        {/if}
-      </button>
-    </div>
+    <h1>TONE GENERATOR</h1>
+    <button class="theme-btn" on:click={toggleTheme} aria-label="Toggle theme">
+      {#if theme === 'dark'}
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+        </svg>
+      {:else}
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+          <path d="M20.354 15.354A9 9 0 018.646 3.646 9 9 0 1012 21a8.96 8.96 0 008.354-5.646z"></path>
+        </svg>
+      {/if}
+    </button>
   </div>
 
   <!-- Main Controls -->
@@ -258,21 +251,12 @@
   .header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    position: relative;
     padding: 16px 0;
     border-bottom: 1px solid var(--border-color);
     margin-bottom: 32px;
   }
-
-  .header-left, .header-right { flex: 1; }
-  .header-center { text-align: center; }
-
-  .home-link {
-    color: var(--accent);
-    text-decoration: none;
-    font-size: 0.85rem;
-  }
-  .home-link:hover { color: var(--accent-hover); }
 
   h1 {
     font-size: 1.1rem;
@@ -287,12 +271,23 @@
     border-radius: 999px;
     width: 32px;
     height: 32px;
+    padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--text-primary);
     cursor: pointer;
-    margin-left: auto;
+    margin-left: 0;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .theme-btn svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    display: block;
   }
   .theme-btn:hover { border-color: var(--accent); }
 
